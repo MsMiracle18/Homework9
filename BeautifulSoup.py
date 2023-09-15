@@ -18,9 +18,9 @@ while True:
     # Отримати інформацію про цитати та авторів на поточній сторінці
     for quote_box in soup.find_all('div', class_='quote'):
         quote_text = quote_box.find('span', class_='text').text
-        author_name = quote_box.find('span', class_='small').find('span', class_='author').text
-        author_url = quote_box.find('span', class_='small').find('a')['href']
-
+        author_name = quote_box.find('small', class_='author').text
+        author_url = 'http://quotes.toscrape.com' + quote_box.find('a').get('href')
+        
         quotes_data.append({
             'text': quote_text,
             'author': author_name
